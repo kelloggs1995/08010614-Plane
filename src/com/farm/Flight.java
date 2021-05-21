@@ -58,6 +58,15 @@ public class Flight {
         seats[seatnos-1].bookSeat();
     }
 
+    public void reserveseat()
+    {
+        int seatnos;
+        Scanner kboard = new Scanner(System.in);
+        System.out.println("Please enter seat number (1-"+nosSeats+")");
+        seatnos=kboard.nextInt();
+        seats[seatnos-1].reserveSeat();
+    }
+
     public void cancelseat() {
         int seatnos;
         Scanner kboard = new Scanner(System.in);
@@ -187,19 +196,20 @@ public class Flight {
         int choice=0;
         Scanner kboard = new Scanner(System.in);
         this.retrieveFile();
-        System.out.println("\n1. Display seat, 2. Book Seat, 3. Cancel Seat, 4. save, 5. retrive 6. Exit");
+        System.out.println("\n1. Display seat, 2. reserve Seat, 3. Book Seat, 4. Cancel Seat, 5. save, 6. retrieve 7. Exit");
         choice = kboard.nextInt();
-        while (choice != 6)
+        while (choice != 7)
         {
             switch(choice)
             {
                 case 1: this.displayFlight();	break;
-                case 2: this.bookseat(); 		break;
-                case 3: this.cancelseat();		break;
-                case 4:	this.saveFile();		break;
-                case 5: this.retrieveFile();break;
+                case 2: this.reserveseat();     break;
+                case 3: this.bookseat(); 		break;
+                case 4: this.cancelseat();		break;
+                case 5:	this.saveFile();		break;
+                case 6: this.retrieveFile();    break;
             }
-            System.out.println("\n1. Display seat, 2. Book Seat, 3. Cancel Seat, 6. Exit");
+            System.out.println("\n1. Display seat, 2. reserve Seat, 3. Book Seat, 4. Cancel Seat, 7. Exit");
             choice = kboard.nextInt();
         }
         this.saveFile();
