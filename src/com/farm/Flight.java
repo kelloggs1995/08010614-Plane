@@ -42,8 +42,10 @@ public class Flight {
 
     }
 
+
+
     public void displayFlight() {
-        System.out.print("Please choose a flight to display the seating plan " + planenos+"\n");
+        System.out.print("Details for Flight " + planenos+"\n");
         for (int i = 0; i < 8; i++) {
             seats[i].displayseat();
         }
@@ -151,7 +153,7 @@ public class Flight {
 
             while (rs.next())
             {
-                if (rs.getInt("status")!=2)
+                if (rs.getInt("status")==0)
                 {
                    //System.out.println("test0"); to check if was entering same with the rest below
                 }
@@ -191,25 +193,44 @@ public class Flight {
     }
 
 
-    public void menu()
+
+    public void bookingmenu()
     {
         int choice=0;
         Scanner kboard = new Scanner(System.in);
         this.retrieveFile();
-        System.out.println("\n1. Display seat, 2. reserve Seat, 3. Book Seat, 4. Cancel Seat, 5. save, 6. retrieve 7. Exit");
+        System.out.println("\n1. Reserve seat, 2. Book Seat, 3. Cancel seat, 4. Return to Main menu");
         choice = kboard.nextInt();
-        while (choice != 7)
+        while (choice != 4)
         {
             switch(choice)
             {
-                case 1: this.displayFlight();	break;
-                case 2: this.reserveseat();     break;
-                case 3: this.bookseat(); 		break;
-                case 4: this.cancelseat();		break;
-                case 5:	this.saveFile();		break;
-                case 6: this.retrieveFile();    break;
+                case 1: this.reserveseat();     break;
+                case 2: this.bookseat(); 		break;
+                case 3: this.cancelseat();		break;
+
             }
-            System.out.println("\n1. Display seat, 2. reserve Seat, 3. Book Seat, 4. Cancel Seat, 7. Exit");
+            System.out.println("\n1. Reserve seat, 2. Book Seat, 3. Cancel seat, 4. Return to Main menu");
+            choice = kboard.nextInt();
+        }
+    } // end method
+
+    public void mainmenu()
+    {
+        int choice=0;
+        Scanner kboard = new Scanner(System.in);
+        this.retrieveFile();
+        System.out.println("\n1. Flight Admin, 2. Display Flight details, 3. Booking menu, 4. Return to Flight choice");
+        choice = kboard.nextInt();
+        while (choice !=4)
+        {
+            switch(choice)
+            {
+                //case 1: this.FlightAdmin();   break;
+                case 2: this.displayFlight();	break;
+                case 3: this.bookingmenu();     break;
+            }
+            System.out.println("\n1. Flight Admin, 2. Display Flight details, 3. Booking menu, 4. Return to Flight choice");
             choice = kboard.nextInt();
         }
         this.saveFile();

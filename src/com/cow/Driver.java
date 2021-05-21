@@ -22,11 +22,11 @@ public class Driver {
             switch (choice)
             {
                 case 1:
-                    c1.menu();
+                    c1.mainmenu();
                     break;
 
                 case 2:
-                    c2.menu();
+                    c2.mainmenu();
                     break;
             }
         }while (choice!=3);
