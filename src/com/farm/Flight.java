@@ -198,7 +198,6 @@ public class Flight {
     {
         int choice=0;
         Scanner kboard = new Scanner(System.in);
-        this.retrieveFile();
         System.out.println("\n1. Reserve seat, 2. Book Seat, 3. Cancel seat, 4. Return to Main menu");
         choice = kboard.nextInt();
         while (choice != 4)
